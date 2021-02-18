@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/Actors/Enemy_Guard.gd" type="Script" id=1]
+[ext_resource path="res://assets/Top-Down_Asset_Pack/Shooter/PNG/Hitman 1/hitman1_stand.png" type="Texture" id=2]
+[ext_resource path="res://src/Actors/AI.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 21 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 383.005
+
+[node name="EnemyGuard" type="KinematicBody2D" groups=[
+"enemy",
+]]
+rotation = 1.57102
+z_index = 1
+collision_layer = 2
+collision_mask = 2147483657
+script = ExtResource( 1 )
+
+[node name="enemy_guard" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AI" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="PlayerDetectionZone" type="Area2D" parent="AI"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/PlayerDetectionZone"]
+shape = SubResource( 2 )
+[connection signal="body_entered" from="AI/PlayerDetectionZone" to="AI" method="_on_PlayerDetectionZone_body_entered"]
