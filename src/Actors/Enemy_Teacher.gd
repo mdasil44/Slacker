@@ -1,2 +1,6 @@
-extends "res://src/Actors/Enemy.gd"
+extends Enemy
+
+
+
+
 

@@ -3,7 +3,7 @@
 [ext_resource path="res://src/Popups/Buttons/Button.tscn" type="PackedScene" id=1]
 
 [node name="NewGameButton" instance=ExtResource( 1 )]
-scene_to_load = "res://src/Levels/DetailedLevelTemplate.tscn"
+scene_to_load = "res://src/Levels/LevelTemplate.tscn"
 
 [node name="Label" parent="." index="0"]
 text = "New Game"

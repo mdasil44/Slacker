@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/Transitions/FadeIn.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Popups/Buttons/QuitButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Popups/WinScreen.gd" type="Script" id=3]
+[ext_resource path="res://src/Popups/Buttons/MainMenuButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Popups/Buttons/PlayAgainButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/UI/ui_main_back.png" type="Texture" id=6]
+[ext_resource path="res://assets/UI/mvboli.ttf" type="DynamicFontData" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+use_filter = true
+extra_spacing_top = -15
+extra_spacing_bottom = -5
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+use_filter = true
+extra_spacing_top = -15
+extra_spacing_bottom = -5
+font_data = ExtResource( 11 )
+
+[node name="WinScreen" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+size_flags_vertical = 0
+texture = ExtResource( 6 )
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+custom_constants/margin_right = 240
+custom_constants/margin_top = 150
+custom_constants/margin_left = 300
+custom_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 300.0
+margin_top = 150.0
+margin_right = 1040.0
+margin_bottom = 620.0
+
+[node name="CenterContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 740.0
+margin_bottom = 97.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer"]
+margin_right = 740.0
+margin_bottom = 97.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "YOU MADE IT!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 101.0
+margin_right = 740.0
+margin_bottom = 470.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 563.0
+margin_bottom = 369.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 563.0
+margin_bottom = 66.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Free test answers and you get to go home early
+What will you do with all that free time?...
+"
+
+[node name="MenuOptions" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 563.0
+margin_bottom = 222.0
+alignment = 1
+
+[node name="PlayAgainButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MenuOptions" instance=ExtResource( 5 )]
+margin_right = 563.0
+
+[node name="MainMenuButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MenuOptions" instance=ExtResource( 4 )]
+margin_top = 52.0
+margin_right = 563.0
+margin_bottom = 100.0
+
+[node name="QuitButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MenuOptions" instance=ExtResource( 2 )]
+margin_top = 104.0
+margin_right = 563.0
+margin_bottom = 152.0
+
+[node name="FadeIn" parent="." instance=ExtResource( 1 )]
+visible = false
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

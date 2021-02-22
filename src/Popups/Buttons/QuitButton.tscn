@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Popups/Buttons/QuitButton.gd" type="Script" id=1]
+[ext_resource path="res://src/Popups/Buttons/Button.tscn" type="PackedScene" id=2]
+
+[node name="QuitButton" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="Label" parent="." index="0"]
+margin_left = -1.0
+margin_top = 2.0
+margin_right = -264.0
+margin_bottom = 2.0
+text = "Quit"
+[connection signal="pressed" from="." to="." method="_on_QuitButton_pressed"]

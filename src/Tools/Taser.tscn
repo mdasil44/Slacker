@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Tools/Taser.gd" type="Script" id=1]
+[ext_resource path="res://assets/Taser.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 10 )
+
+[node name="Taser" type="Area2D"]
+script = ExtResource( 1 )
+speed = 600.0
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.807843, 0.870588, 0.0745098, 1 )
+position = Vector2( -4.54747e-13, -3.57628e-07 )
+scale = Vector2( 0.05, 0.06 )
+texture = ExtResource( 2 )
+
+[node name="CollisionArea2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+process_mode = 0
+one_shot = true

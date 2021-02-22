@@ -18,9 +18,10 @@ z_index = 1
 collision_layer = 2
 collision_mask = 2147483657
 script = ExtResource( 2 )
+detection_angle = 90
 active_chase = true
 
-[node name="enemy_teacher" type="Sprite" parent="."]
+[node name="enemyteacher" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -30,7 +31,10 @@ shape = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="PlayerDetectionZone" type="Area2D" parent="AI"]
+collision_layer = 2
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AI/PlayerDetectionZone"]
 shape = SubResource( 2 )
 [connection signal="body_entered" from="AI/PlayerDetectionZone" to="AI" method="_on_PlayerDetectionZone_body_entered"]
+[connection signal="body_exited" from="AI/PlayerDetectionZone" to="AI" method="_on_PlayerDetectionZone_body_exited"]

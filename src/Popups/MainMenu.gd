@@ -7,7 +7,8 @@ var scene_path_to_load
 func _ready():
 	# for each child in the list of menu option buttons, connect to _on_Button_pressed function
 	for button in $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MenuOptions.get_children():
-		button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
+		if button.name != "QuitButton":
+			button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
 	
 	# on startup, disable the continue button and grab focus on the new game button
 	get_node("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MenuOptions/ContinueButton").disabled = true
